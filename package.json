@@ -1,0 +1,30 @@
+{
+  "name": "product-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.6",
+    "@tanstack/react-query": "^4.35.3",
+    "@types/node": "20.6.5",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
+    "antd": "^5.9.3",
+    "axios": "^1.5.0",
+    "next": "13.5.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.46.2",
+    "react-redux": "^8.1.2",
+    "typescript": "5.2.2",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^4.34.1"
+  }
+}
