@@ -1,0 +1,53 @@
+.container{
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #a1a1a1;
+    border-radius: 4px;
+}
+
+.image{
+    width: 170px;
+    height: 200px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.image:hover{
+    transform: scale(1.1);
+}
+.container_info{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 25px 10px 20px;
+}
+
+.title{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+.title:hover{
+    font-size: 26px;
+    transition: 0.3s;
+}
+.description{
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+
+}
+.price{
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 5px;
+
+}
+.category{
+    font-size: 20px;
+    color: #888;
+    margin-bottom: 5px;
+}
