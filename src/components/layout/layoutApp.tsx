@@ -1,5 +1,3 @@
-'use client'
-
 import {Layout} from 'antd';
 import React, {ReactNode} from 'react';
 import s from './layoutApp.module.css'

@@ -1,6 +1,5 @@
 import s from './product.module.css'
 import {useRouter} from "next/router";
-import Link from "next/link";
 
 type ProductType = {
     image: string
@@ -11,16 +10,14 @@ type ProductType = {
     id:number
 }
 export const Product = ({category, id, image, price, title, description}: ProductType) => {
-
+    const router=useRouter()
     return (
         <div className={s.container}>
             <img src={image} alt='image product' className={s.image}/>
             <div className={s.container_info}>
-                <Link href={`/product/${id}`} className={s.title}>{title}</Link>
+                <span onClick={() => router.push(`/products/${id}`)} className={s.title}>{title}</span>
                 <span className={s.category}>{category}</span>
-
                 <span className={s.price}>${price}</span>
-                <span className={s.description}>{description}</span>
             </div>
 
         </div>

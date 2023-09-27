@@ -1,39 +1,26 @@
 .container{
     display: flex;
     margin-bottom: 20px;
-    border: 1px solid #a1a1a1;
-    border-radius: 4px;
-    padding: 5px;
 }
 
 .image{
-    width: 170px;
-    height: 200px;
+    width: 80%;
+    height: 100vh;
     border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-.image:hover{
-    transform: scale(1.1);
 }
 .container_info{
     display: flex;
     flex-direction: column;
-    margin: 20px 25px 10px 20px;
+    padding: 20px 25px 10px 70px;
 }
 
 .title{
     font-size: 24px;
     line-height: 32px;
     font-weight: 700;
-    margin-bottom: 5px;
-    cursor: pointer;
+    margin-bottom: 15px;
     transition: 0.3s;
 
-}
-.title:hover{
-    font-size: 26px;
-    transition: 0.3s;
 }
 .description{
     font-size: 16px;
@@ -44,11 +31,27 @@
 .price{
     font-weight: 700;
     font-size: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 
 }
 .category{
     font-size: 20px;
     color: #888;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+}
+.back_container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 5px;
+    cursor: pointer;
+}
+.back{
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.back:hover{
+    font-size: 17px;
+    transition: 0.3s;
 }

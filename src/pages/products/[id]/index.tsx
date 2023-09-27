@@ -1,11 +1,12 @@
 import {ProductPage} from "@/components/productPage/productPage";
 
-const Page = () => {
+const Index = () => {
+
     return(
         <div>
-            <ProductPage/>
+            <ProductPage />
         </div>
     )
 
 };
-export default Page
+export default Index
