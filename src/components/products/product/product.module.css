@@ -19,7 +19,12 @@
 .container_info{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin: 20px 25px 10px 20px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
 }
 
 .title{
@@ -51,4 +56,8 @@
     font-size: 20px;
     color: #888;
     margin-bottom: 5px;
+}
+.icons{
+    display: flex;
+    justify-content: flex-end;
 }

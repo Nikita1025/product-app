@@ -3,38 +3,27 @@ import {
     Button,
     Form,
     Input,
-    Upload,
 } from 'antd';
 import {Controller, useForm} from "react-hook-form";
 import {AddProductType} from "@/utils/types";
 import {useAddProduct} from "@/hooks/useAddProduct";
-import {useQueryClient} from "@tanstack/react-query";
+import s from './addProductForm.module.css'
 
-const normFile = (e: any) => {
-    if (Array.isArray(e)) {
-        return e;
-    }
-    return e?.fileList;
-};
 export const AddProductForm = () => {
-    const queryClient = useQueryClient()
 
     const {mutate} = useAddProduct()
     const {
         handleSubmit,
-        control
+        control,
+        reset
     } = useForm<AddProductType>()
 
     const onSubmit = handleSubmit((data: AddProductType) => {
-        mutate(data, {
-            onSuccess: (data) => {
-                // Обновление данных в React Query
-                queryClient.setQueryData(['products'], (prevData: any) => [...prevData, data]);
-            }
-        })
+        mutate(data)
+        reset()
     })
     return (
-        <Form onFinish={onSubmit}>
+        <Form onFinish={onSubmit} className={s.container}>
             <Controller
                 name="title"
                 control={control}
@@ -42,16 +31,15 @@ export const AddProductForm = () => {
                 rules={{
                     required: 'Поле "Имя" является обязательным',
                 }}
-                render={({field}) => <Input {...field} />}
+                render={({field}) => <Input placeholder='Title' {...field} />}
             />
             <Controller
                 name="price"
                 control={control}
-                defaultValue={0}
                 rules={{
                     required: 'Поле "Имя" является обязательным',
                 }}
-                render={({field}) => <Input {...field} />}
+                render={({field}) => <Input  type='number'  placeholder='Price' {...field} />}
             />
             <Controller
                 name="category"
@@ -60,7 +48,7 @@ export const AddProductForm = () => {
                 rules={{
                     required: 'Поле "Имя" является обязательным',
                 }}
-                render={({field}) => <Input {...field} />}
+                render={({field}) => <Input placeholder='Category' {...field} />}
             />
             <Controller
                 name="description"
@@ -69,31 +57,21 @@ export const AddProductForm = () => {
                 rules={{
                     required: 'Поле "Имя" является обязательным',
                 }}
-                render={({field}) => <Input {...field} />}
+                render={({field}) => <Input placeholder='Description' {...field} />}
             />
             <Controller
                 name="image"
                 control={control}
                 defaultValue=""
                 rules={{
-                    required: 'Поле "Изображение" является обязательным',
+                    required: 'Поле "Имя" является обязательным',
                 }}
-                render={({field}) => (
-                    <Upload
-                        accept="image/*"
-                        beforeUpload={() => false}
-                        onChange={(info) => {
-                            const {file} = info;
-                            field.onChange(file);
-                        }}
-                    >
-                        <Button>Выберите файл</Button>
-                    </Upload>
-                )}
+                render={({field}) => <Input placeholder='Link image' {...field} />}
             />
             <Form.Item>
-                <Button type="primary" htmlType="submit">Отправить</Button>
+                <Button type="primary" htmlType="submit">Send</Button>
             </Form.Item>
+
         </Form>
 
     );

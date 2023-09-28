@@ -1,12 +1,21 @@
 import {useProducts} from "@/hooks/useProducts";
 import {Product} from "@/components/products/product/product";
-import Link from "next/link";
+import {AddProductForm} from "@/components/addProductForm/addProductForm";
+import React, {useState} from "react";
+import {Button, Spin} from "antd";
+import {antIcon} from "@/utils/antIcon";
 
 export const Products = () => {
+    const [open, setOpen]=useState(false)
     const {products} = useProducts()
+    const onClickOpen =()=>{
+        setOpen(!open)
+    }
     return (<div >
-            <Link href={'/products/new_product'}>Create product</Link>
+            {/*{isLoading && <Spin indicator={antIcon} />}*/}
 
+            <Button type='primary' onClick={onClickOpen}>Create product</Button>
+            {open && <AddProductForm/>}
             {products?.map(el => (
                 <div key={el.id}>
                     <Product image={el.image}
@@ -18,6 +27,7 @@ export const Products = () => {
                     />
                 </div>
             ))}
+
         </div>
     );
 };

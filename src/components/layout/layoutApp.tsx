@@ -17,7 +17,6 @@ export const LayoutApp = ({children}: LayoutAppType) => {
             <Content className={s.content}>
                 {children}
             </Content>
-            <Footer className={s.footer}>Shop online ©2023</Footer>
         </Layout>
     );
 };

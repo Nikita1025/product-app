@@ -1,5 +1,3 @@
-
-
 import {useQuery} from "@tanstack/react-query";
 import {ProductService} from "@/service/product-service";
 
