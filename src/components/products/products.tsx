@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Button } from 'antd';
 
+import s from './products.module.css';
+
 import { AddProductForm } from '@/components/addProductForm/addProductForm';
 import { Product } from '@/components/products/product/product';
 import { useProducts } from '@/hooks/useProducts';
@@ -10,13 +12,14 @@ import { ResponseProductsType } from '@/utils/types';
 export const Products = () => {
   const [open, setOpen] = useState(false);
   const { products } = useProducts();
+
   const onClickOpen = () => {
     setOpen(!open);
   };
 
   return (
     <div>
-      <Button type="primary" onClick={onClickOpen}>
+      <Button type="primary" className={s.button} onClick={onClickOpen}>
         Create product
       </Button>
       {open && <AddProductForm />}

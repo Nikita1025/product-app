@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { useRouter } from 'next/router';
 
 import s from './product.module.css';
 
+import DeleteIcon from '@/assets/icon/delete-icon';
 import EditIcon from '@/assets/icon/edit-icon';
 import { EditProductForm } from '@/components/editProductForm/editProductForm';
+import { useDeleteProduct } from '@/hooks/useDeleteProduct';
 
 type ProductType = {
   image: string;
@@ -24,10 +26,13 @@ export const Product = ({
   description,
 }: ProductType) => {
   const router = useRouter();
-
+  const { mutate } = useDeleteProduct();
   const [editMode, setEditMode] = useState(false);
   const onClickEditMode = () => {
     setEditMode(!editMode);
+  };
+  const onClickDelete = (id: number) => {
+    mutate(id);
   };
 
   return (
@@ -44,18 +49,21 @@ export const Product = ({
         />
       ) : (
         <>
-          <img src={image} alt="image product" className={s.image} />
-          <div className={s.container_info}>
-            <div className={s.info}>
-              <span onClick={() => router.push(`/products/${id}`)} className={s.title}>
-                {title}
-              </span>
-              <span className={s.category}>{category}</span>
-              <span className={s.price}>${price}</span>
+          <div className={s.block_info}>
+            <img src={image} alt="image product" className={s.image} />
+            <div className={s.container_info}>
+              <div className={s.info}>
+                <span onClick={() => router.push(`/products/${id}`)} className={s.title}>
+                  {title}
+                </span>
+                <span className={s.category}>{category}</span>
+                <span className={s.price}>${price}</span>
+              </div>
             </div>
-            <div className={s.icons}>
-              <EditIcon onClick={onClickEditMode} />
-            </div>
+          </div>
+          <div className={s.icons}>
+            <EditIcon className={s.icon} onClick={onClickEditMode} />
+            <DeleteIcon className={s.icon} onClick={() => onClickDelete(id)} />
           </div>
         </>
       )}

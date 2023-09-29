@@ -26,12 +26,11 @@ export const EditProductForm = ({
   price,
   description,
 }: EditProductFormType) => {
-  const { mutate } = useEditProduct();
+  const { mutate } = useEditProduct(id);
   const { handleSubmit, control, reset } = useForm<EditProductType>();
 
   const onSubmit = handleSubmit((requestData: EditProductType) => {
     mutate({ requestData, id });
-    console.log(requestData);
     reset();
     setEditMode(false);
   });
@@ -44,9 +43,6 @@ export const EditProductForm = ({
       <Controller
         name="title"
         control={control}
-        rules={{
-          required: 'Поле "Имя" является обязательным',
-        }}
         render={({ field }) => (
           <Input defaultValue={title} placeholder="Title" {...field} />
         )}
@@ -54,9 +50,6 @@ export const EditProductForm = ({
       <Controller
         name="price"
         control={control}
-        rules={{
-          required: 'Поле "Имя" является обязательным',
-        }}
         render={({ field }) => (
           <Input defaultValue={price} type="number" placeholder="Price" {...field} />
         )}
@@ -64,9 +57,6 @@ export const EditProductForm = ({
       <Controller
         name="category"
         control={control}
-        rules={{
-          required: 'Поле "Имя" является обязательным',
-        }}
         render={({ field }) => (
           <Input defaultValue={category} placeholder="Category" {...field} />
         )}
@@ -74,9 +64,6 @@ export const EditProductForm = ({
       <Controller
         name="description"
         control={control}
-        rules={{
-          required: 'Поле "Имя" является обязательным',
-        }}
         render={({ field }) => (
           <Input defaultValue={description} placeholder="Description" {...field} />
         )}
@@ -84,9 +71,6 @@ export const EditProductForm = ({
       <Controller
         name="image"
         control={control}
-        rules={{
-          required: 'Поле "Имя" является обязательным',
-        }}
         render={({ field }) => (
           <Input defaultValue={image} placeholder="Link image" {...field} />
         )}

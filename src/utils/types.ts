@@ -21,11 +21,11 @@ export type AddProductType = {
   image: string;
 };
 export type EditProductType = {
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
+  title?: string;
+  price?: number;
+  category?: string;
+  description?: string;
+  image?: string;
 };
 export type EditProductResponseType = {
   title: string;
