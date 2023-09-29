@@ -11,8 +11,7 @@ import {
 
 export const ProductApi = {
   async getProducts() {
-    const { data } =
-      await baseApi.get<AxiosResponse<ResponseProductsType[]>>('/products');
+    const { data } = await baseApi.get<ResponseProductsType[]>('/products');
 
     return data;
   },
