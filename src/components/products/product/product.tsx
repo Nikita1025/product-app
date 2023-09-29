@@ -26,13 +26,13 @@ export const Product = ({
   description,
 }: ProductType) => {
   const router = useRouter();
-  const { mutate } = useDeleteProduct();
+  const { mutate } = useDeleteProduct(id);
   const [editMode, setEditMode] = useState(false);
   const onClickEditMode = () => {
     setEditMode(!editMode);
   };
-  const onClickDelete = (id: number) => {
-    mutate(id);
+  const onClickDelete = () => {
+    mutate();
   };
 
   return (
@@ -63,7 +63,7 @@ export const Product = ({
           </div>
           <div className={s.icons}>
             <EditIcon className={s.icon} onClick={onClickEditMode} />
-            <DeleteIcon className={s.icon} onClick={() => onClickDelete(id)} />
+            <DeleteIcon className={s.icon} onClick={() => onClickDelete()} />
           </div>
         </>
       )}

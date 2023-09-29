@@ -30,7 +30,7 @@ export const EditProductForm = ({
   const { handleSubmit, control, reset } = useForm<EditProductType>();
 
   const onSubmit = handleSubmit((requestData: EditProductType) => {
-    mutate({ requestData, id });
+    mutate(requestData);
     reset();
     setEditMode(false);
   });

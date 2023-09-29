@@ -7,9 +7,7 @@ export const useProducts = () => {
     data: products,
     isLoading,
     isError,
-  } = useQuery(['get products'], () => ProductApi.getProducts(), {
-    select: ({ data }) => data,
-  });
+  } = useQuery(['get products'], () => ProductApi.getProducts());
 
   return { products, isLoading, isError };
 };

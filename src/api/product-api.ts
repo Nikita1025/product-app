@@ -1,15 +1,20 @@
+import { AxiosResponse } from 'axios';
+
 import baseApi from '@/api/base-api';
 import {
   AddProductResponseType,
   AddProductType,
-  EditProductRequestType,
   EditProductResponseType,
+  EditProductType,
   ResponseProductsType,
 } from '@/utils/types';
 
 export const ProductApi = {
   async getProducts() {
-    return baseApi.get<ResponseProductsType[]>('/products');
+    const { data } =
+      await baseApi.get<AxiosResponse<ResponseProductsType[]>>('/products');
+
+    return data;
   },
   async getProduct(id?: number) {
     return baseApi.get<ResponseProductsType>(`/products/${id}`);
@@ -19,11 +24,13 @@ export const ProductApi = {
       headers: { 'Content-Type': 'application/json' },
     });
   },
-  async editProduct(requestData: EditProductRequestType) {
-    return baseApi.put<EditProductResponseType>(
-      `/products/${requestData.id}`,
-      requestData.requestData,
+  async editProduct(id: number, newData: EditProductType) {
+    const { data } = await baseApi.put<AxiosResponse<EditProductResponseType>>(
+      `/products/${id}`,
+      newData,
     );
+
+    return data;
   },
   async deleteProduct(id: number) {
     return baseApi.delete(`/products/${id}`);

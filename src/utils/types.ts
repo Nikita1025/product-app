@@ -26,19 +26,17 @@ export type EditProductType = {
   category?: string;
   description?: string;
   image?: string;
+  id?: number;
 };
 export type EditProductResponseType = {
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-  id: number;
+  title?: string;
+  price?: number;
+  category?: string;
+  description?: string;
+  image?: string;
+  id?: number;
 };
-export type EditProductRequestType = {
-  requestData: EditProductType;
-  id: number;
-};
+
 export type AddProductResponseType = {
   title: string;
   price: number;

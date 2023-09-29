@@ -1,17 +1,25 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { ProductApi } from '@/api/product-api';
-import { EditProductRequestType } from '@/utils/types';
+import { EditProductType, ResponseProductsType } from '@/utils/types';
 
 export const useEditProduct = (id: number) => {
   const queryClient = useQueryClient();
 
-  return useMutation({
-    mutationFn: (data: EditProductRequestType) =>
-      ProductApi.editProduct({
-        requestData: data.requestData,
-        id: data.id,
-      }),
-    onSuccess: (newData: any) => queryClient.setQueryData(['get products', id], newData),
-  });
+  return useMutation(
+    ['edit'],
+    (data: EditProductType) => ProductApi.editProduct(id, data),
+    {
+      onSuccess(newData: any) {
+        queryClient.setQueryData(
+          ['get products'],
+          (oldData: ResponseProductsType[] | undefined) => {
+            return oldData?.map(product =>
+              product.id === id ? { ...product, ...newData } : product,
+            );
+          },
+        );
+      },
+    },
+  );
 };
