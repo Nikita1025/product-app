@@ -1,17 +1,16 @@
-import {useQuery} from "@tanstack/react-query";
-import {ProductService} from "@/service/product-service";
+import { useQuery } from '@tanstack/react-query';
 
-export const useProduct = (id?:number) => {
-    const {
-        data: product,
-        isLoading,
-        isError
-    } = useQuery(
-        ['get product', id],
-        () => ProductService.getProduct(id),
-        {
-            select: ({data})=>data,
-            enabled: !!id
-        })
-    return {product, isLoading, isError}
-}
+import { ProductApi } from '@/api/product-api';
+
+export const useProduct = (id?: number) => {
+  const {
+    data: product,
+    isLoading,
+    isError,
+  } = useQuery(['get product', id], () => ProductApi.getProduct(id), {
+    select: ({ data }) => data,
+    enabled: !!id,
+  });
+
+  return { product, isLoading, isError };
+};

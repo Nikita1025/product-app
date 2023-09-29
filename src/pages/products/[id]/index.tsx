@@ -1,9 +1,9 @@
-import {ProductPage} from "@/components/productPage/productPage";
-import {useAppSelector} from "@/service/store";
+import { ProductPage } from '@/components/productPage/productPage';
+import { useAppSelector } from '@/store/store';
 const Index = () => {
-    const {isAuth} = useAppSelector(state => state.auth)
+  const { isAuth } = useAppSelector(state => state.auth);
 
-    return isAuth && <ProductPage />
-
+  return isAuth && <ProductPage />;
 };
-export default Index
+
+export default Index;
