@@ -16,8 +16,6 @@ export const Products = () => {
 
   return (
     <div>
-      {/*{isLoading && <Spin indicator={antIcon} />}*/}
-
       <Button type="primary" onClick={onClickOpen}>
         Create product
       </Button>
