@@ -1,23 +1,23 @@
-Веб-интерфейс Shop online
+# H1 Веб-интерфейс Shop online
 
 
-Стек технологий: 
--Next.js
--TypeScript
--Tanstack Query
--Redux Toolkit
--Axios
--React Hook Form
--Zod
--Ant Design
+# H3 Стек технологий:
+*Next.js
+*TypeScript
+*Tanstack Query
+*Redux Toolkit
+*Axios
+*React Hook Form
+*Zod
+*Ant Design
 
 
 
-Чтобы запустить проект:
+# H3 Чтобы запустить проект:
 1. npm install --global yarn
 2. yarn 
 3. yarn run dev
 
-Данные для авторизации:
-username: mor_2314
-password: 83r5^_
+# H3 Данные для авторизации:
+*username: mor_2314
+*password: 83r5^_
