@@ -14,7 +14,7 @@ export const usePostProduct = () => {
       queryClient.setQueryData(
         ['get products'],
         (oldData: ResponseProductsType[] | undefined) =>
-          oldData ? [...oldData, data] : oldData,
+          oldData ? [data, ...oldData] : oldData,
       );
     },
   });
