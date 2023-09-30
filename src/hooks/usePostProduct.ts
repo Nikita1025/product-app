@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { ProductApi } from '@/api/product-api';
+import { ProductApi } from '@/api';
 import {
   AddProductResponseType,
   AddProductType,

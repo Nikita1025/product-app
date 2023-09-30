@@ -6,10 +6,10 @@ import { Controller, useForm } from 'react-hook-form';
 
 import s from './loginFrom.module.css';
 
-import { loginSchema } from '@/common/schemas/login-schema';
-import { Spinner } from '@/components/ui/spiner /spinner';
-import { useLogin } from '@/hooks/useLogin';
-import { LoginFormType } from '@/utils/types';
+import { loginSchema } from '@/common/schemas';
+import { Spinner } from '@/components/ui/spiner ';
+import { useLogin } from '@/hooks';
+import { LoginFormType } from '@/utils';
 
 export const LoginForm = () => {
   const { mutate, isLoading, isError } = useLogin();

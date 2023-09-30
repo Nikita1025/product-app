@@ -4,10 +4,10 @@ import { Button } from 'antd';
 
 import s from './products.module.css';
 
-import { AddProductForm } from '@/components/addProductForm/addProductForm';
-import { Product } from '@/components/products/product/product';
-import { Spinner } from '@/components/ui/spiner /spinner';
-import { useProducts } from '@/hooks/useProducts';
+import { AddProductForm } from '@/components/addProductForm';
+import { Product } from '@/components/products/product';
+import { Spinner } from '@/components/ui/spiner ';
+import { useProducts } from '@/hooks';
 
 export const Products = () => {
   const [open, setOpen] = useState(false);

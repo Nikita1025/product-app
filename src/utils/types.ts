@@ -14,6 +14,7 @@ export type AddProductType = {
   description: string;
   image: string;
 };
+
 export type EditProductType = {
   title?: string;
   price?: number;

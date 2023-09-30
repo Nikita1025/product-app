@@ -9,9 +9,8 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 
-import { LayoutApp } from '@/components/ui/layout/layoutApp';
-import { authActions } from '@/store/auth-slice';
-import { store, useAppDispatch } from '@/store/store';
+import { LayoutApp } from '@/components/ui/layout';
+import { authActions, store, useAppDispatch } from '@/store';
 
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;

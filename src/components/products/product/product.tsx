@@ -6,9 +6,9 @@ import s from './product.module.css';
 
 import DeleteIcon from '@/assets/icon/delete-icon';
 import EditIcon from '@/assets/icon/edit-icon';
-import { EditProductForm } from '@/components/editProductForm/editProductForm';
-import { Spinner } from '@/components/ui/spiner /spinner';
-import { useDeleteProduct } from '@/hooks/useDeleteProduct';
+import { EditProductForm } from '@/components/editProductForm';
+import { Spinner } from '@/components/ui/spiner ';
+import { useDeleteProduct } from '@/hooks';
 
 type ProductType = {
   image: string;

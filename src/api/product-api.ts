@@ -6,7 +6,7 @@ import {
   EditProductResponseType,
   EditProductType,
   ResponseProductsType,
-} from '@/utils/types';
+} from '@/utils';
 
 export const ProductApi = {
   async getProducts() {

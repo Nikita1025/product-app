@@ -6,10 +6,10 @@ import { Controller, useForm } from 'react-hook-form';
 
 import s from './addProductForm.module.css';
 
-import { addProductSchema } from '@/common/schemas/add-product-schema';
-import { Spinner } from '@/components/ui/spiner /spinner';
-import { usePostProduct } from '@/hooks/usePostProduct';
-import { AddProductType } from '@/utils/types';
+import { addProductSchema } from '@/common/schemas';
+import { Spinner } from '@/components/ui/spiner ';
+import { usePostProduct } from '@/hooks';
+import { AddProductType } from '@/utils';
 
 export const AddProductForm = () => {
   const { mutate, isLoading } = usePostProduct();

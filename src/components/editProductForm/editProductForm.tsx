@@ -5,9 +5,9 @@ import { Controller, useForm } from 'react-hook-form';
 
 import s from './editProductForm.module.css';
 
-import { Spinner } from '@/components/ui/spiner /spinner';
-import { usePutProduct } from '@/hooks/usePutProduct';
-import { EditProductType } from '@/utils/types';
+import { Spinner } from '@/components/ui/spiner ';
+import { usePutProduct } from '@/hooks';
+import { EditProductType } from '@/utils';
 
 type EditProductFormType = {
   image: string;

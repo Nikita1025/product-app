@@ -1,5 +1,5 @@
 import baseApi from '@/api/base-api';
-import { LoginFormType, LoginResponseType } from '@/utils/types';
+import { LoginFormType, LoginResponseType } from '@/utils';
 
 export const AuthApi = {
   async logIn(loginData: LoginFormType) {

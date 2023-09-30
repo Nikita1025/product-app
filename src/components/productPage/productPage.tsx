@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 import s from './productPage.module.css';
 
 import VectorIcon from '@/assets/icon/vector-icon';
-import { Spinner } from '@/components/ui/spiner /spinner';
-import { useProduct } from '@/hooks/useProduct';
+import { Spinner } from '@/components/ui/spiner ';
+import { useProduct } from '@/hooks';
+
 export const ProductPage = () => {
   const { query, push } = useRouter();
   const { product, isLoading } = useProduct(Number(query?.id));

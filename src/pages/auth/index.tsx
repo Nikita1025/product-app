@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { LoginForm } from '@/components/login/loginForm';
-import { useAppSelector } from '@/store/store';
+import { LoginForm } from '@/components/login';
+import { useAppSelector } from '@/store';
 
 const Index = () => {
   const { isAuth } = useAppSelector(state => state.auth);

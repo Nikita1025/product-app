@@ -1,10 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 
-import { AuthApi } from '@/api/auth-api';
-import { authActions } from '@/store/auth-slice';
-import { useAppDispatch } from '@/store/store';
-import { LoginFormType, LoginResponseType } from '@/utils/types';
+import { AuthApi } from '@/api';
+import { authActions, useAppDispatch } from '@/store';
+import { LoginFormType, LoginResponseType } from '@/utils';
 
 export const useLogin = () => {
   const dispatch = useAppDispatch();

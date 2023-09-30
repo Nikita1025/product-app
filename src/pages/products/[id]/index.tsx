@@ -1,5 +1,5 @@
-import { ProductPage } from '@/components/productPage/productPage';
-import { useAppSelector } from '@/store/store';
+import { ProductPage } from '@/components/productPage';
+import { useAppSelector } from '@/store';
 const Index = () => {
   const { isAuth } = useAppSelector(state => state.auth);
 
