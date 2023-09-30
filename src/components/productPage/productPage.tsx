@@ -1,15 +1,19 @@
+import React from 'react';
+
 import { useRouter } from 'next/router';
 
 import s from './productPage.module.css';
 
 import VectorIcon from '@/assets/icon/vector-icon';
+import { Spinner } from '@/components/ui/spiner /spinner';
 import { useProduct } from '@/hooks/useProduct';
 export const ProductPage = () => {
   const { query, push } = useRouter();
-  const { product } = useProduct(Number(query?.id));
+  const { product, isLoading } = useProduct(Number(query?.id));
 
   return (
     <div>
+      {isLoading && <Spinner />}
       <div className={s.back_container} onClick={() => push('/')}>
         <VectorIcon />
         <span className={s.back}>Back</span>

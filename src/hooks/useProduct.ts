@@ -8,7 +8,6 @@ export const useProduct = (id?: number) => {
     isLoading,
     isError,
   } = useQuery(['get product', id], () => ProductApi.getProduct(id), {
-    select: ({ data }) => data,
     enabled: !!id,
   });
 

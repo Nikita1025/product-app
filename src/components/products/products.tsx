@@ -6,12 +6,12 @@ import s from './products.module.css';
 
 import { AddProductForm } from '@/components/addProductForm/addProductForm';
 import { Product } from '@/components/products/product/product';
+import { Spinner } from '@/components/ui/spiner /spinner';
 import { useProducts } from '@/hooks/useProducts';
-import { ResponseProductsType } from '@/utils/types';
 
 export const Products = () => {
   const [open, setOpen] = useState(false);
-  const { products } = useProducts();
+  const { products, isLoading } = useProducts();
 
   const onClickOpen = () => {
     setOpen(!open);
@@ -19,11 +19,15 @@ export const Products = () => {
 
   return (
     <div>
-      <Button type="primary" className={s.button} onClick={onClickOpen}>
-        Create product
-      </Button>
+      <div>
+        <Button type="primary" className={s.button} onClick={onClickOpen}>
+          Create product
+        </Button>
+        {isLoading && <Spinner />}
+      </div>
+
       {open && <AddProductForm />}
-      {products?.map((el: ResponseProductsType) => (
+      {products?.map(el => (
         <div key={el.id}>
           <Product
             image={el.image}

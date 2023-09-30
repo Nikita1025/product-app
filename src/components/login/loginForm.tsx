@@ -1,32 +1,25 @@
 import React from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Form, Spin } from 'antd';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { Button, Form, Input, Alert } from 'antd';
+import { Controller, useForm } from 'react-hook-form';
 
 import s from './loginFrom.module.css';
 
+import { loginSchema } from '@/common/schemas/login-schema';
+import { Spinner } from '@/components/ui/spiner /spinner';
 import { useLogin } from '@/hooks/useLogin';
-import { antIcon } from '@/utils/antIcon';
 import { LoginFormType } from '@/utils/types';
-const schema = z.object({
-  username: z.string().min(1, 'Username is required').max(100),
-  password: z
-    .string()
-    .min(3, 'Password  must have more than 3 characters')
-    .max(8, 'Password must have more than 8 characters'),
-});
 
 export const LoginForm = () => {
-  const { mutate, status } = useLogin();
+  const { mutate, isLoading, isError } = useLogin();
   const {
     handleSubmit,
-    register,
     reset,
-    formState: { errors, isSubmitting },
+    control,
+    formState: { errors },
   } = useForm<LoginFormType>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(loginSchema()),
   });
   const onSubmit = handleSubmit((data: LoginFormType) => {
     mutate(data);
@@ -34,36 +27,48 @@ export const LoginForm = () => {
   });
 
   return (
-    <>
+    <div className={s.container_page}>
+      <div className={s.status}>
+        {isError && (
+          <Alert closable message="username or password is incorrect" type="error" />
+        )}
+        {isLoading && <Spinner />}
+      </div>
       <div className={s.container}>
-        {status === 'loading' && <Spin indicator={antIcon} />}
-
         <span className={s.login}>Log In</span>
         <Form onFinish={onSubmit} className={s.container_form}>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <input {...register('username')} />
-            {errors.username && <span>{errors.username.message}</span>}
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <input {...register('password')} />
-            {errors.password && <span>{errors.password.message}</span>}
-          </div>
+          <Controller
+            name="username"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div className={s.input_container}>
+                <Input placeholder="Username" {...field} />
+                {errors.username && (
+                  <span className={s.error}>{errors.username.message}</span>
+                )}
+              </div>
+            )}
+          />
 
-          {/*<Controller*/}
-          {/*  name="password"*/}
-          {/*  control={control}*/}
-          {/*  defaultValue=""*/}
-          {/*  rules={{*/}
-          {/*    required: 'Поле "Имя" является обязательным',*/}
-          {/*  }}*/}
-          {/*  render={({ field }) => <Input.Password placeholder="Password" {...field} />}*/}
-          {/*/>*/}
-
-          <Button type="primary" htmlType="submit" disabled={isSubmitting}>
+          <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div className={s.input_container}>
+                <Input.Password placeholder="Password" {...field} />
+                {errors.password && (
+                  <span className={s.error}>{errors.password.message}</span>
+                )}
+              </div>
+            )}
+          />
+          <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form>
       </div>
-    </>
+    </div>
   );
 };

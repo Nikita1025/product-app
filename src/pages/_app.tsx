@@ -9,7 +9,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 
-import { LayoutApp } from '@/components/layout/layoutApp';
+import { LayoutApp } from '@/components/ui/layout/layoutApp';
 import { authActions } from '@/store/auth-slice';
 import { store, useAppDispatch } from '@/store/store';
 

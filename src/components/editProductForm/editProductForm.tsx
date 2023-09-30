@@ -5,8 +5,10 @@ import { Controller, useForm } from 'react-hook-form';
 
 import s from './editProductForm.module.css';
 
-import { useEditProduct } from '@/hooks/useEditProduct';
+import { Spinner } from '@/components/ui/spiner /spinner';
+import { usePutProduct } from '@/hooks/usePutProduct';
 import { EditProductType } from '@/utils/types';
+
 type EditProductFormType = {
   image: string;
   price: number;
@@ -26,7 +28,7 @@ export const EditProductForm = ({
   price,
   description,
 }: EditProductFormType) => {
-  const { mutate } = useEditProduct(id);
+  const { mutate, isLoading } = usePutProduct(id);
   const { handleSubmit, control, reset } = useForm<EditProductType>();
 
   const onSubmit = handleSubmit((requestData: EditProductType) => {
@@ -39,43 +41,44 @@ export const EditProductForm = ({
   };
 
   return (
-    <Form onFinish={onSubmit} className={s.container}>
-      <Controller
-        name="title"
-        control={control}
-        render={({ field }) => (
-          <Input defaultValue={title} placeholder="Title" {...field} />
-        )}
-      />
-      <Controller
-        name="price"
-        control={control}
-        render={({ field }) => (
-          <Input defaultValue={price} type="number" placeholder="Price" {...field} />
-        )}
-      />
-      <Controller
-        name="category"
-        control={control}
-        render={({ field }) => (
-          <Input defaultValue={category} placeholder="Category" {...field} />
-        )}
-      />
-      <Controller
-        name="description"
-        control={control}
-        render={({ field }) => (
-          <Input defaultValue={description} placeholder="Description" {...field} />
-        )}
-      />
-      <Controller
-        name="image"
-        control={control}
-        render={({ field }) => (
-          <Input defaultValue={image} placeholder="Link image" {...field} />
-        )}
-      />
-      <Form.Item>
+    <>
+      {isLoading && <Spinner />}
+      <Form onFinish={onSubmit} className={s.container}>
+        <Controller
+          name="title"
+          control={control}
+          render={({ field }) => (
+            <Input defaultValue={title} placeholder="Title" {...field} />
+          )}
+        />
+        <Controller
+          name="price"
+          control={control}
+          render={({ field }) => (
+            <Input defaultValue={price} type="number" placeholder="Price" {...field} />
+          )}
+        />
+        <Controller
+          name="category"
+          control={control}
+          render={({ field }) => (
+            <Input defaultValue={category} placeholder="Category" {...field} />
+          )}
+        />
+        <Controller
+          name="description"
+          control={control}
+          render={({ field }) => (
+            <Input defaultValue={description} placeholder="Description" {...field} />
+          )}
+        />
+        <Controller
+          name="image"
+          control={control}
+          render={({ field }) => (
+            <Input defaultValue={image} placeholder="Link image" {...field} />
+          )}
+        />
         <div className={s.buttons}>
           <Button type="primary" htmlType="submit">
             Send
@@ -84,7 +87,7 @@ export const EditProductForm = ({
             Cancel
           </Button>
         </div>
-      </Form.Item>
-    </Form>
+      </Form>
+    </>
   );
 };

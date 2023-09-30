@@ -6,6 +6,11 @@
     height: 80vh;
     gap: 15px;
 }
+.container_page{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .login{
     font-size: 20px;
     font-style: normal;
@@ -17,5 +22,14 @@
     flex-direction: column;
     width: 500px;
     gap: 15px;
-
+}
+.input_container{
+    display: flex;
+    flex-direction: column;
+}
+.error{
+    color: #e50a35;
+}
+.status{
+    width: 250px;
 }

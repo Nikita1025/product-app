@@ -5,12 +5,6 @@ export type ResponseProductsType = {
   title: string;
   category: string;
   description: string;
-  rating: RatingType;
-};
-
-type RatingType = {
-  rate: number;
-  count: number;
 };
 
 export type AddProductType = {
@@ -29,6 +23,14 @@ export type EditProductType = {
   id?: number;
 };
 export type EditProductResponseType = {
+  title?: string;
+  price?: number;
+  category?: string;
+  description?: string;
+  image?: string;
+  id?: number;
+};
+export type DeleteProductResponseType = {
   title?: string;
   price?: number;
   category?: string;

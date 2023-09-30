@@ -1,9 +1,8 @@
-import { AxiosResponse } from 'axios';
-
 import baseApi from '@/api/base-api';
 import {
   AddProductResponseType,
   AddProductType,
+  DeleteProductResponseType,
   EditProductResponseType,
   EditProductType,
   ResponseProductsType,
@@ -16,15 +15,19 @@ export const ProductApi = {
     return data;
   },
   async getProduct(id?: number) {
-    return baseApi.get<ResponseProductsType>(`/products/${id}`);
+    const { data } = await baseApi.get<ResponseProductsType>(`/products/${id}`);
+
+    return data;
   },
-  async addProduct(data: AddProductType) {
-    return baseApi.post<AddProductResponseType>('/products', data, {
+  async addProduct(newData: AddProductType) {
+    const { data } = await baseApi.post<AddProductResponseType>('/products', newData, {
       headers: { 'Content-Type': 'application/json' },
     });
+
+    return data;
   },
   async editProduct(id: number, newData: EditProductType) {
-    const { data } = await baseApi.put<AxiosResponse<EditProductResponseType>>(
+    const { data } = await baseApi.put<EditProductResponseType>(
       `/products/${id}`,
       newData,
     );
@@ -32,6 +35,8 @@ export const ProductApi = {
     return data;
   },
   async deleteProduct(id: number) {
-    return baseApi.delete(`/products/${id}`);
+    const { data } = await baseApi.delete<DeleteProductResponseType>(`/products/${id}`);
+
+    return data;
   },
 };
