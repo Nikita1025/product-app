@@ -81,7 +81,7 @@ export const EditProductForm = ({
         />
         <div className={s.buttons}>
           <Button type="primary" htmlType="submit">
-            Send
+            Save
           </Button>
           <Button type="default" onClick={onClick}>
             Cancel
