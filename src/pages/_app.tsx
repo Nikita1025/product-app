@@ -26,7 +26,7 @@ const queryClient = new QueryClient({
     },
   },
 });
-
+//в
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
